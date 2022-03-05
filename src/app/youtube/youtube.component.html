@@ -1,0 +1,9 @@
+<div class="container mx-auto">
+    &nbsp;
+    <h1 class='text-center'> Related Videos from Youtube</h1>
+</div>
+<div class="d-flex justify-content-center" *ngFor="let link of videoContent.items, let i=index">
+    <a class="btn btn-primary" href="https://www.youtube.com/watch?v={{link.id.videoId}}" role="button" target=_x>
+        <p class="font-weight-bold">Watch {{link.snippet.channelTitle | uppercase | titlecase}}'s {{link.snippet.title |uppercase|titlecase }} </p>
+    </a>
+</div>

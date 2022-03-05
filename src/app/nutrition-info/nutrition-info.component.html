@@ -1,0 +1,109 @@
+<div class="container mx-auto">
+    <h1 class='text-center'>{{nutritionFacts.recipe.label}}</h1>
+    <img class="rounded mx-auto d-block" src="{{nutritionFacts.recipe.image}}" alt="no image">
+</div> &nbsp;
+
+<div class="d-flex justify-content-center">
+    <a class="rounded mx-auto btn btn-primary" [routerLink]="['/youtubeLink', nutritionFacts.recipe.label]" role="button">Watch Related Videos</a>
+</div>
+&nbsp;
+<table style="text-align: center;margin-left: auto;margin-right: auto;">
+    <thead>
+        <tr>
+            <th class="bg-info">Diet Label</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let label of nutritionFacts.recipe.dietLabels, let i=index">
+        <td class="table-success">{{label}}</td>
+    </tbody>
+    &nbsp;
+    <thead>
+        <tr>
+            <th class="bg-info" scope="col">Health Label</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let label of nutritionFacts.recipe.healthLabels, let i=index">
+        <td class="table-success">{{label}}</td>
+    </tbody>
+    &nbsp;
+    <thead>
+        <tr>
+            <th class="bg-info" scope="col">Caution</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let label of nutritionFacts.recipe.cautions, let i=index">
+        <td class="table-success">{{label}}</td>
+    </tbody>
+    &nbsp;
+    <thead>
+        <tr>
+            <th class="bg-info" scope="col">Ingredients</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let label of nutritionFacts.recipe.ingredientLines, let i=index">
+        <td class="table-success">{{label}}</td>
+    </tbody>
+    &nbsp;
+    <thead>
+        <tr>
+            <th class="bg-info" scope="col">Prepration Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td class="table-success">{{nutritionFacts.recipe.totalTime}} minutes</td>
+    </tbody>
+    &nbsp;
+    <thead>
+        <tr>
+            <th class="bg-info" scope="col">Cuisine Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td class="table-success">{{nutritionFacts.recipe.cuisineType}}</td>
+    </tbody>
+    &nbsp;
+    <thead>
+        <tr>
+            <th class="bg-info" scope="col">Meal Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td class="table-success">{{nutritionFacts.recipe.mealType}}</td>
+    </tbody>
+    &nbsp;
+    <thead>
+        <tr>
+            <th class="bg-info" scope="col">Dish Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td class="table-success">{{nutritionFacts.recipe.dishType}}</td>
+    </tbody>
+    &nbsp;
+    <thead>
+        <tr>
+            <th class="bg-info" scope="col">Total Calories</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td class="table-success">{{nutritionFacts.recipe.calories | number: '4.0-0'}}</td>
+    </tbody>
+    &nbsp; &nbsp;
+</table>
+<table style="text-align: center;margin-left: auto;margin-right: auto;">
+    <thead>
+        <tr>
+            <th colspan="8" class="bg-info" scope="col">Total Nutrients</th>
+        </tr>
+        <tr>
+            <th colspan="2" scope="col">Label</th>
+            <th colspan="2" scope="col">Quantity</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let nutrient of nutritionFacts.recipe.digest, let indexOfelement=index;">
+        <tr>
+            <td colspan="2">{{nutrient.label}}</td>
+            <td colspan="2">{{nutrient.total | number: '4.0-0'}}{{nutrient.unit}}</td>
+        </tr>
+    </tbody>
+</table>

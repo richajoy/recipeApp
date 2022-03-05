@@ -1,0 +1,29 @@
+<div class="container">
+    <form class="d-flex">
+        <input #q id="q" value="Chicken" (keyup)="search(q.value, ingr.value, cuisineType.value, mealType.value)" class="form-control me-2" type="text" placeholder="Filter by food.." aria-label="Search">
+        <input #ingr id="ingr" value="5-15" (keyup)="search(q.value, ingr.value, cuisineType.value, mealType.value)" class="form-control me-2" type="text" placeholder="No. of ingredients(e.g.5-8).." aria-label="Search">
+        <input #cuisineType id="cuisineType" value="American" (keyup)="search(q.value, ingr.value, cuisineType.value, mealType.value)" class="form-control me-2" type="text" placeholder="Cuisines(e.g.American,Mediterranean).." aria-label="Search">
+        <input #mealType id="mealType" value="Lunch" (keyup)="search(q.value, ingr.value, cuisineType.value, mealType.value)" class="form-control me-2" type="text" placeholder="Meal Type (e.g.Dinner,Snack).." aria-label="Search">
+        <button class="btn btn-outline-success" (click)="search(q.value, ingr.value, cuisineType.value, mealType.value)" type="button">Search</button>
+    </form>
+    <div class="row row-cols-4 row-cols-md-4 g-4">
+        <div *ngFor="let item of dataItems.hits, let i=index" class="card h-100" style="width: 18rem">
+            <div class="col h-100">
+                <img src="{{item.recipe.image}}" class="card-img-top" alt="no image">
+                <div class="card h-100">
+                    <h5 class="card-title">{{item.recipe.label | uppercase}}</h5>
+                </div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{item.recipe.dishType[0]| uppercase | titlecase}}</li>
+                <li class="list-group-item">{{item.recipe.cuisineType[0] | uppercase | titlecase}} {{item.recipe.cuisineType[1] | uppercase | titlecase}}</li>
+                <li class="list-group-item">{{item.recipe.mealType[0] | uppercase | titlecase}}</li>
+                <li class="list-group-item">calories : {{item.recipe.calories | number: '4.0-0'}}</li>
+            </ul>
+            <div class="d-grid gap-2">
+                <a href="{{item.recipe.url}}" target=_x class="btn btn-primary">Recipe</a>
+                <a [routerLink]="['/nutrition', sliceUri(item.recipe.uri)]" target=_x class="btn btn-info">Nutrition Info</a>
+            </div>
+        </div>
+    </div>
+</div>

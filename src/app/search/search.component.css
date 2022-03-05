@@ -1,0 +1,15 @@
+.d-flex {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.row {
+    margin-left: 25px;
+    padding-left: 25px;
+    align-items: center;
+}
+
+.btn-primary .btn {
+    border-color: black;
+    background-color: brown;
+}
